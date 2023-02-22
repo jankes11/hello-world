@@ -11,16 +11,19 @@ jobs:
           root: ~/
           paths:
             - output.txt    
-  print_hello:
+  print_output_file:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: 
-          command: |
-            echo "world"
-            echo $MY_ENV_VAR
+      - attach_workspace:
+          at: ~/
+      run: cat ~/output.txt
+
 workflows:
   welcome:
     jobs:
-      - save_hello_world_output
+      - save_hello_world_ouput
+      - print_output_file:
+        requires:
+          - save_hello_world_output
 
