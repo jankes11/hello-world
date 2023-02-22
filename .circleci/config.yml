@@ -12,9 +12,9 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: 
-        command: |
-          echo "world"
-          echo $MY_ENV_VAR
+          command: |
+            echo "world"
+            echo $MY_ENV_VAR
 workflows:
   welcome:
     jobs:
